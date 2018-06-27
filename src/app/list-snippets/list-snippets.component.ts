@@ -5,6 +5,7 @@ export interface CodeSnippets{
   name: string;
   language: string;
   code: string;
+
 }
 
 @Component({
@@ -18,6 +19,7 @@ export class ListSnippetsComponent {
   selectedSnippet: CodeSnippets;
   showAdd = false;
   showUpdate = false;
+
 
   constructor() {
     this.listOfSnippets.push({'id': 1232, 'name': 'D', 'language': 'JavaScript', 'code': 'function(){}',);
@@ -46,5 +48,12 @@ export class ListSnippetsComponent {
   deleteSnippetEventHandler(event: CodeSnippets){
     console.log('Delete Handler');
     this.listOfSnippets.splice(this.listOfSnippets.indexOf(event), 1);
+  }
+
+  updateSnippetEventHandler(event: CodeSnippets){
+    console.log('Delete Handler');
+    const filteredSnippets = this.listOfSnippets.filter((x) => x.id === event.id);
+    this.listOfSnippets.splice(this.listOfSnippets.indexOf(filteredSnippets[0]), 1);
+    this.listOfSnippets.push(event);
   }
 }

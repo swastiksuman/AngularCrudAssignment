@@ -12,6 +12,8 @@ export class ViewComponent {
   @Output()
   deleteSnippetEvent: EventEmitter<CodeSnippets> = new EventEmitter();
 
+  @Output()
+  updateSnippetEvent: EventEmitter<CodeSnippets> = new EventEmitter();
 
   @Input()
   currentSnippet: CodeSnippets = {'id': 0, 'name': '', 'language': '', 'code': '',};
@@ -22,11 +24,11 @@ export class ViewComponent {
     this.deleteSnippetEvent.emit(this.id);
    }
 
-  updateSnippets(){
-
-  }
-
   deleteSnippets(){
     this.deleteSnippetEvent.emit(this.currentSnippet);
+  }
+
+  updateSnippets(){
+    this.updateSnippetEvent.emit(this.currentSnippet);
   }
 }
