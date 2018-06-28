@@ -1,8 +1,8 @@
 
 <div class="col-md-3 pull-right">
-<label>Name</label><input class="form-control" type="text" [(ngModel)] = "currentSnippet.name">
-<label>Language</label><input class="form-control" type="text" [(ngModel)] = "currentSnippet.language">
-<label>Code</label><input class="form-control" type="text" [(ngModel)] = "currentSnippet.code">
+<label>Name</label><input class="form-control" type="text" [(ngModel)] = "updateSnippet.name">
+<label>Language</label><input class="form-control" type="text" [(ngModel)] = "updateSnippet.language">
+<label>Code</label><input class="form-control" type="text" [(ngModel)] = "updateSnippet.code">
 <button class="btn-primary" (click)= "updateSnippets()">Update Snippet</button>
 <button class="btn-danger" (click)= "deleteSnippets()">Delete Snippet</button>
 </div>

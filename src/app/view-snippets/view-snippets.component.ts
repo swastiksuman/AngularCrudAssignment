@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CodeSnippets } from '../list-snippets/list-snippets.component';
 
 
@@ -7,7 +7,7 @@ import { CodeSnippets } from '../list-snippets/list-snippets.component';
   templateUrl: './view-snippets.component.html'
 })
 
-export class ViewComponent {
+export class ViewComponent implements OnInit{
 
   @Output()
   deleteSnippetEvent: EventEmitter<CodeSnippets> = new EventEmitter();
@@ -16,19 +16,28 @@ export class ViewComponent {
   updateSnippetEvent: EventEmitter<CodeSnippets> = new EventEmitter();
 
   @Input()
-  currentSnippet: CodeSnippets = {'id': 0, 'name': '', 'language': '', 'code': '',};
+  currentSnippet: CodeSnippets;
+
+  updateSnippet: CodeSnippets = {'id': 0, 'name': '', 'language': '', 'code': '',};
 
   constructor() { }
+
+  ngOnInit(){
+    this.updateSnippet.id = this.currentSnippet.id;
+    this.updateSnippet.name = this.currentSnippet.name;
+    this.updateSnippet.language = this.currentSnippet.language;
+    this.updateSnippet.code = this.currentSnippet.code;
+  }
 
   onDelete() {
     this.deleteSnippetEvent.emit(this.id);
    }
 
   deleteSnippets(){
-    this.deleteSnippetEvent.emit(this.currentSnippet);
+    this.deleteSnippetEvent.emit(this.updateSnippet);
   }
 
   updateSnippets(){
-    this.updateSnippetEvent.emit(this.currentSnippet);
+    this.updateSnippetEvent.emit(this.updateSnippet);
   }
 }

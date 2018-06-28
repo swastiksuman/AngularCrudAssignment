@@ -39,6 +39,7 @@ export class ListSnippetsComponent {
     console.log('SSS');
     console.log(snippet.name);
     this.selectedSnippet = snippet;
+    
   }
 
   showAddToggle(){
